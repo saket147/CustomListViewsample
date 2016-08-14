@@ -1,6 +1,8 @@
 package com.example.saket.customlistviewsample;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,6 +37,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this,"Clicked in Acti",Toast.LENGTH_SHORT).show();
+//                Uri uri = Uri.parse("http://www.google.com"); // missing 'http://' will cause crashed
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                context.startActivity(intent);
+                if (i<1)
+                {
+                    Uri uri = Uri.parse("http://www.google.com"); // missing 'http://' will cause crashed
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    context.startActivity(intent);
+                }
             }
         });
 

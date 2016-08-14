@@ -1,6 +1,8 @@
 package com.example.saket.customlistviewsample;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,12 +60,15 @@ public class CustomAdapter extends BaseAdapter
         holder.imageView=(ImageView)rowView.findViewById(R.id.imgView);
         holder.tv.setText(result[position]);
         holder.imageView.setImageResource(imageid[position]);
-//        rowView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, "Clicked"+result[position], Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Clicked"+result[position], Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("http://www.google.com"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
+            }
+        });
         return rowView;
     }
 
